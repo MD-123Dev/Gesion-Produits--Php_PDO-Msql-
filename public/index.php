@@ -1,5 +1,5 @@
 <?php
-require 'Model/PaginationProduit.php';
+require '../Controller/PaginationProduit.php';
 
 ?>
 
@@ -14,31 +14,16 @@ require 'Model/PaginationProduit.php';
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
 
-  <!--Navbar-->
-  <nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-
-      </ul>
-
-    </div>
-  </nav>
-
-  <form class="form-horizontal" action="Model/Cvs.php" method="post" name="frmCSVImport" id="frmCSVImport" enctype="multipart/form-data">
+  <?php 
+  include '../View/layouts/navbar.html';
+  ?>
+ 
+  <form class="form-horizontal" action="../Controller/Cvs.php" method="post" name="frmCSVImport" id="frmCSVImport" enctype="multipart/form-data">
     <div class="input-row d-flex justify-content-end">
       <input type="file" name="file" id="file" accept=".csv">
       <button type="submit" id="submit" name="import" class="btn-warning">Import</button>
@@ -47,10 +32,10 @@ require 'Model/PaginationProduit.php';
     </div>
 
   </form>
-  <!--/.Navbar-->
+  
   <div class="container">
     <div class="row m-5">
-      <div class="col-md-10">
+      <div class="col-md-10 col-sm-10">
         <div class="form-group">
           <div class="input-group">
 
@@ -62,7 +47,7 @@ require 'Model/PaginationProduit.php';
 
 
 
-    <a href="View/CreateProduitView.php" class="btn btn-info btn-rounded float-right mb-2">Add new Product</a> 
+    <a href="../View/CreateProduitView.php" class="btn btn-info btn-rounded float-right mb-2">Add new Product</a> 
     <table class="table" id="table">
       <thead class="black white-text">
         <tr>
@@ -85,8 +70,8 @@ require 'Model/PaginationProduit.php';
               <td><?= $prd->category; ?></td>
            
             <td>
-              <a href="View/Update_View.php?id=<?= $prd->id ?>" class="btn btn-info">Edit</a> 
-              <a onclick="return confirm('Are you sure you want to delete this entry?')" href="Model/DataProduit.php?id=<?= $prd->id ?>" class='btn btn-danger'>Delete</a>
+              <a href="../View/UpdateView.php?id=<?= $prd->id ?>" class="btn btn-info">Edit</a> 
+              <a onclick="return confirm('Are you sure you want to delete?')" href="../Controller/DataProduit.php?id=<?= $prd->id ?>" class='btn btn-danger'>Delete</a>
             </td>
 
         </tr>
@@ -115,16 +100,16 @@ require 'Model/PaginationProduit.php';
       $("#search_text").keyup(function() {
         var search = $(this).val();
         $.ajax({
-          url: "Model/search.php",
+          url: "../Controller/search.php",
           method: "post",
 
           data: {
             query: search
           },
           success: function(response) {
-            $('#ablerow1').html(response);
-
+           $('#ablerow1').html(response);
           }
+          
 
         });
       });
@@ -136,7 +121,7 @@ require 'Model/PaginationProduit.php';
 <footer class="page-footer font-small blue">
 
   
-  <div class="footer-copyright text-center py-3">2020 coptright:
+  <div class="footer-copyright text-center py-3">2020 copyright:
 
   </div>
   

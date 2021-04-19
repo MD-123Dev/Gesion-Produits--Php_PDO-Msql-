@@ -1,5 +1,6 @@
 <?php
- include "Config.php";
+require '../env/Config.php';
+
 $search = $_POST['query'];
 
 if ($search != '') {

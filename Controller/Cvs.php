@@ -1,6 +1,6 @@
 <?php
 
-    require 'Config.php';
+    require '../env/Config.php';
 
     if (isset($_POST["import"])) {
         
@@ -28,5 +28,5 @@
             }
         }
     }
-    header("Location: /test1");
+    header("Location: /index.php");
 ?>

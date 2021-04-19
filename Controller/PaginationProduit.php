@@ -1,7 +1,9 @@
 <?php
 
-require 'Config.php ';
-$limit = 8;
+require '../env/Config.php';
+
+$limit = 4; //**limit in one page  */
+
 $sql = 'SELECT * FROM products';
 $s = $connection->prepare($sql);
 $s->execute();

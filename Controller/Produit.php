@@ -11,7 +11,8 @@
         //**get all produit  */
         function getProduits()
         {
-            require 'Config.php ';
+            require '../env/Config.php';
+
 
             $sql = 'SELECT * FROM products';
             $statement = $connection->prepare($sql);
@@ -23,7 +24,8 @@
           //**insert produit  */
         function createProduit()
         {
-            require 'Config.php ';
+            require '../env/Config.php';
+
             if (isset($_POST['product_name'])  && isset($_POST['prix']) && isset($_POST['category'])) {
                 $product_name = $_POST['product_name']; 
                 $prix = $_POST['prix'];
@@ -32,7 +34,7 @@
                 $statement = $connection->prepare($sql);
                 if ($statement->execute([':product_name' => $product_name, ':prix' => $prix, ':category' => $category])) { 
                     
-                  header("Location: ../"); 
+                  header("Location: ../public/index.php"); 
 
                 }
             
@@ -42,12 +44,13 @@
         //** delect produit from Bs */
         function delectProduit()
         {
-            require 'Config.php ';
+            require '../env/Config.php';
+
             $id = $_GET['id'];
             $sql = 'DELETE FROM products WHERE id=:id';
             $statement = $connection->prepare($sql);
             if ($statement->execute([':id' => $id])) { 
-                header("Location: ../"); //***return en page index
+                header("Location: ../public/index.php"); //***return en page index
             }
         }
 
@@ -55,7 +58,8 @@
         //**update produit  */
         function upadteProduit()
         {
-            require 'Config.php ';
+            require '../env/Config.php';
+
             $id = $_GET['id'];
            
             $sql = 'SELECT * FROM products WHERE id=:id';
@@ -71,7 +75,7 @@
                 $sql = 'UPDATE products SET product_name=:product_name, price=:prix, category=:category WHERE id=:id '; 
                 $statement = $connection->prepare($sql);
                 if ($statement->execute([':product_name' => $product_name, ':prix' => $prix, ':category' => $category, ':id' => $id])) {
-                header("Location: ../");
+                header("Location: ../public/index.php");
                 }
             }
            return $person;
