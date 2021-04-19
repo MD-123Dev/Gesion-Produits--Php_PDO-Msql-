@@ -7,7 +7,7 @@ Gesion Produits -Php_PDO and Msql and OOP
 + PDO (PHP Data Objects)
 + Search 
 + Ajax 
-+ import cvs file and save in Bs
++ import csv file and save in Bs
 + Pagination
 + object oriented programming
 + Code Clean
